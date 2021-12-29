@@ -19,18 +19,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
-        // Create new Dice object with 6 sides and roll it
-        val dice = Dice(6)
-        val diceRoll = dice.roll()
+        val myFirstDice = Dice(8)
+        val rollResult = myFirstDice.roll()
+        val luckyNumber = 4
+        val result = when (rollResult) {
+            luckyNumber -> "You won! You rolled a 4!"
+            1 -> "So sorry! You rolled a 1.\n Try again!"
+            2 -> "Sadly, you rolled a 2.\n Try again!"
+            3 -> "Unfortunately, \nyou rolled a 3.\n Try again!"
+            5 -> "Don't cry! You rolled a 5.\n Try again!"
+            6 -> "Apologies! You rolled a 6.\n Try again!"
+            else -> "To high! You rolled a ${rollResult}.\n Try again!"
+        }
 
         // Update the screen with the dice roll
         val resultTextView: TextView = findViewById(R.id.textView)
-        resultTextView.text = diceRoll.toString()
+        resultTextView.text = result
     }
 }
 
 class Dice(private val numSides: Int) {
-
     fun roll(): Int {
         return (1..numSides).random()
     }
