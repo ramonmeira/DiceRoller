@@ -2,6 +2,7 @@ package com.example.diceroller
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -29,11 +30,22 @@ class MainActivity : AppCompatActivity() {
         val resultTextView: TextView = findViewById(R.id.textViewResult)
         resultTextView.text = (diceRoll1 + diceRoll2).toString()
 
-        val resultDice1: TextView = findViewById(R.id.textViewDice1)
-        resultDice1.text = (diceRoll1).toString()
+        val resultDice1: ImageView = findViewById(R.id.imageViewDice1)
+        resultDice1.setImageResource(getImage(diceRoll1))
 
-        val resultDice2: TextView = findViewById(R.id.textViewDice2)
-        resultDice2.text = (diceRoll2).toString()
+        val resultDice2: ImageView = findViewById(R.id.imageViewDice2)
+        resultDice2.setImageResource(getImage(diceRoll2))
+    }
+
+    private fun getImage(dice: Int): Int{
+        return when (dice) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
     }
 }
 
