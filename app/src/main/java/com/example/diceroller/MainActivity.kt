@@ -32,9 +32,11 @@ class MainActivity : AppCompatActivity() {
 
         val resultDice1: ImageView = findViewById(R.id.imageViewDice1)
         resultDice1.setImageResource(getImage(diceRoll1))
+        resultDice1.contentDescription = diceRoll1.toString()
 
         val resultDice2: ImageView = findViewById(R.id.imageViewDice2)
         resultDice2.setImageResource(getImage(diceRoll2))
+        resultDice2.contentDescription = diceRoll2.toString()
     }
 
     private fun getImage(dice: Int): Int{
